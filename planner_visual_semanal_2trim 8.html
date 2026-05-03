@@ -1,0 +1,162 @@
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Planner visual semanal do 2º Trimestre de Inglês — 8º Ano Escola do Campo, 13 semanas com tipo e conteúdo de cada aula</h2>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{padding:1rem 0}
+.header-row{display:grid;grid-template-columns:80px repeat(2,1fr);gap:6px;margin-bottom:6px}
+.header-cell{font-size:12px;font-weight:500;color:var(--color-text-secondary);text-align:center;padding:6px 4px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary)}
+.week-row{display:grid;grid-template-columns:80px repeat(2,1fr);gap:6px;margin-bottom:6px;align-items:stretch}
+.week-label{display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--color-text-secondary);background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);padding:6px 4px;text-align:center;line-height:1.3}
+.week-label span{font-size:10px;color:var(--color-text-tertiary);font-weight:400}
+.aula-cell{border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);padding:8px 10px;display:flex;flex-direction:column;gap:3px;min-height:70px}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;width:fit-content;margin-bottom:2px}
+.aula-num{font-size:10px;color:var(--color-text-tertiary);font-weight:400}
+.aula-title{font-size:12px;font-weight:500;color:var(--color-text-primary);line-height:1.3}
+.aula-sub{font-size:11px;color:var(--color-text-secondary);line-height:1.3}
+
+.t-conteudo{background:#EAF3DE}
+.t-conteudo .badge{background:#C0DD97;color:#27500A}
+.t-revisao{background:#FAEEDA}
+.t-revisao .badge{background:#FAC775;color:#633806}
+.t-avaliacao{background:#FCEBEB}
+.t-avaliacao .badge{background:#F7C1C1;color:#791F1F}
+.t-recuperacao{background:#FAEEDA}
+.t-recuperacao .badge{background:#EF9F27;color:#412402}
+.t-projeto{background:#E6F1FB}
+.t-projeto .badge{background:#85B7EB;color:#0C447C}
+.t-encerramento{background:#EEEDFE}
+.t-encerramento .badge{background:#AFA9EC;color:#3C3489}
+.t-ludica{background:#FBEAF0}
+.t-ludica .badge{background:#ED93B1;color:#72243E}
+
+@media(prefers-color-scheme:dark){
+.t-conteudo{background:#173404}
+.t-conteudo .badge{background:#3B6D11;color:#C0DD97}
+.t-revisao{background:#412402}
+.t-revisao .badge{background:#854F0B;color:#FAC775}
+.t-avaliacao{background:#501313}
+.t-avaliacao .badge{background:#A32D2D;color:#F7C1C1}
+.t-recuperacao{background:#412402}
+.t-recuperacao .badge{background:#854F0B;color:#FAC775}
+.t-projeto{background:#042C53}
+.t-projeto .badge{background:#185FA5;color:#B5D4F4}
+.t-encerramento{background:#26215C}
+.t-encerramento .badge{background:#534AB7;color:#CECBF6}
+.t-ludica{background:#4B1528}
+.t-ludica .badge{background:#993556;color:#F4C0D1}
+}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+</style>
+
+<div class="wrap">
+
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot" style="background:#639922"></div>Conteúdo</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#BA7517"></div>Revisão</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#E24B4A"></div>Avaliação</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#EF9F27"></div>Recuperação</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#378ADD"></div>Projeto</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#D4537E"></div>Lúdica</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#7F77DD"></div>Encerramento</div>
+</div>
+
+<div class="header-row">
+  <div class="header-cell">Semana</div>
+  <div class="header-cell">Aula A</div>
+  <div class="header-cell">Aula B</div>
+</div>
+
+<div id="planner"></div>
+</div>
+
+<script>
+const weeks = [
+  {sem:1, aulas:[
+    {num:1, tipo:"conteudo", titulo:"Apresentação + Food Vocabulary", sub:"Vocabulário de alimentos: rice, bean, corn, egg, water, milk…"},
+    {num:2, tipo:"conteudo", titulo:"Contáveis e Incontáveis", sub:"Countable / Uncountable — tabela de 2 colunas, fichas"},
+  ]},
+  {sem:2, aulas:[
+    {num:3, tipo:"conteudo", titulo:"Quantificadores: some e any", sub:"Afirmativa (some) · Negativa/pergunta (any)"},
+    {num:4, tipo:"ludica",   titulo:"Quantificadores: many e much + Lúdica", sub:"Many (contável) · Much (incontável) · Supermercado da Roça"},
+  ]},
+  {sem:3, aulas:[
+    {num:5, tipo:"conteudo", titulo:"Gênero Textual: Receita", sub:"Leitura guiada — Bean Soup · Estrutura: title / ingredients / instructions"},
+    {num:6, tipo:"projeto",  titulo:"Produção: Nossa Receita Local", sub:"Produção em duplas · Apresentação oral · Folha-modelo"},
+  ]},
+  {sem:4, aulas:[
+    {num:7, tipo:"revisao",   titulo:"Revisão Geral — Semanas 1 a 3", sub:"3 estações rotativas · Quiz oral · Comunicado de avaliação"},
+    {num:8, tipo:"avaliacao", titulo:"Avaliação Parte 1", sub:"Vocabulário · C/U · Some/Any/Many/Much · Interpretação de receita"},
+  ]},
+  {sem:5, aulas:[
+    {num:9,  tipo:"conteudo", titulo:"Adjetivos Descritivos", sub:"big/small · hot/cold · fast/slow · quiet/noisy · old/new · clean/dirty"},
+    {num:10, tipo:"conteudo", titulo:"Adjetivos Comparativos", sub:"Adjetivos curtos: +er than · Longos: more… than"},
+  ]},
+  {sem:6, aulas:[
+    {num:11, tipo:"ludica",   titulo:"Comparativos + Tirinhas + Lúdica", sub:"Leitura de tirinhas do campo · Campeonato do Campo"},
+    {num:12, tipo:"conteudo", titulo:"Adjetivos Superlativos", sub:"The + est / the most… · Tabela tripla: base / comp. / superl."},
+  ]},
+  {sem:7, aulas:[
+    {num:13, tipo:"conteudo", titulo:"Integração: Comp. + Superl.", sub:"Mini-parágrafo 'Minha Região em Inglês'"},
+    {num:14, tipo:"revisao",  titulo:"Revisão Geral — Semanas 1 a 6", sub:"Mapa mental · 4 estações · Mural de dúvidas (post-it)"},
+  ]},
+  {sem:8, aulas:[
+    {num:15, tipo:"avaliacao", titulo:"Avaliação Trimestral Parte 2", sub:"Adjetivos · Comparativos · Superlativos · Tirinha"},
+    {num:16, tipo:"revisao",   titulo:"Devolução + Correção Coletiva", sub:"Grupo A (aprofundamento) · Grupo B (retomada guiada)"},
+  ]},
+  {sem:9, aulas:[
+    {num:17, tipo:"recuperacao", titulo:"Recuperação: Quantificadores", sub:"Fichas coloridas · Jogo de dado · Mini-avaliação formativa"},
+    {num:18, tipo:"recuperacao", titulo:"Recuperação: Comp. e Superl.", sub:"Ranking físico · Baralho de comparação · Mini-avaliação"},
+  ]},
+  {sem:10, aulas:[
+    {num:19, tipo:"conteudo", titulo:"Vocabulário: Natureza e Campo", sub:"sun, rain, wind, soil, river, tree, crop, harvest, field…"},
+    {num:20, tipo:"conteudo", titulo:"Texto Descritivo: Meu Lugar", sub:"Produção com andaime · Revisão em duplas · Metacognição"},
+  ]},
+  {sem:11, aulas:[
+    {num:21, tipo:"ludica",   titulo:"Revisão + Mapa Mental + Lúdica", sub:"3 estações integradas · Bingo do Trimestre"},
+    {num:22, tipo:"projeto",  titulo:"Projeto: Mini-Card Meu Lugar", sub:"Card A5 · Frente + verso · Apresentação · Mural do Campo"},
+  ]},
+  {sem:12, aulas:[
+    {num:23, tipo:"projeto",  titulo:"Apresentação dos Mini-Cards", sub:"Apresentação oral 45s/aluno · Avaliação formativa de fala"},
+    {num:24, tipo:"ludica",   titulo:"Revisão Final: Grand Prix do Campo", sub:"4 categorias · Equipes · Competição oral e escrita"},
+  ]},
+  {sem:13, aulas:[
+    {num:25, tipo:"recuperacao",  titulo:"Avaliação Final de Recuperação", sub:"Prova adaptada · Banco de palavras · Mediação individual"},
+    {num:26, tipo:"encerramento", titulo:"Encerramento + Celebração", sub:"Passaporte do Aprendiz · Word I Remember · Mural final"},
+  ]},
+];
+
+const labelMap = {
+  conteudo:"Conteúdo", revisao:"Revisão", avaliacao:"Avaliação",
+  recuperacao:"Recuperação", projeto:"Projeto", ludica:"Lúdica", encerramento:"Encerramento"
+};
+
+const cont = document.getElementById("planner");
+weeks.forEach(w => {
+  const row = document.createElement("div");
+  row.className = "week-row";
+
+  const wlabel = document.createElement("div");
+  wlabel.className = "week-label";
+  wlabel.innerHTML = `Sem. ${w.sem}<br><span>Aulas ${w.aulas[0].num}–${w.aulas[1].num}</span>`;
+  row.appendChild(wlabel);
+
+  w.aulas.forEach(a => {
+    const cell = document.createElement("div");
+    cell.className = `aula-cell t-${a.tipo}`;
+    cell.innerHTML = `
+      <span class="aula-num">Aula ${a.num}</span>
+      <span class="badge">${labelMap[a.tipo]}</span>
+      <span class="aula-title">${a.titulo}</span>
+      <span class="aula-sub">${a.sub}</span>
+    `;
+    row.appendChild(cell);
+  });
+
+  cont.appendChild(row);
+});
+</script>
